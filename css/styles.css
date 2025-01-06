@@ -1,0 +1,508 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Color Variables */
+:root {
+    --lightest-gray: #f8f9fa; /* Light Gray */
+    --lighter-gray: #e9ecef;  /* Lighter Gray */
+    --light-gray: #dee2e6;    /* Light Gray */
+    --gray: #ced4da;          /* Gray */
+    --dark-gray: #adb5bd;     /* Dark Gray */
+    --darker-gray: #6c757d;   /* Darker Gray */
+    --darkest-gray: #495057;  /* Darkest Gray */
+    --black: #343a40;         /* Black */
+    --darker-black: #212529;  /* Darker Black */
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--lightest-gray);
+    color: var(--darkest-gray);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.container p {
+    margin-top: 20px;
+}
+
+/* Header */
+
+.container.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header-left, .header-right {
+    flex: 1;
+    padding: 10px;
+}
+
+.header-left {
+    text-align: left; /* Align the text to the left */
+}
+
+.header-right img {
+    width: 100%;
+    height: auto; /* Ensure the image is responsive and maintains aspect ratio */
+}
+
+.quote {
+    font-size: 1.5em; /* Increase the font size of the quote for emphasis */
+    font-weight: bold;
+    color: var(--darker-gray); /* Use a dark gray for better visibility */
+}
+
+
+
+.logo {
+    flex: 0 1 auto; /* Logo can grow and shrink but maintains content size */
+}
+
+.company-title {
+    flex: 1 1 auto; /* Title takes up remaining space */
+    text-align: center; /* Center the title text within its flex container */
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-end;
+    flex: 0 1 auto; /* Navigation can grow and shrink but maintains content size */
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+    }
+
+    .company-title {
+        margin: 10px 0; /* Add margin top and bottom for the mobile view */
+    }
+
+    nav ul {
+        width: 100%; /* Full width for smaller screens */
+        justify-content: center; /* Center navigation items on small screens */
+    }
+}
+
+header {
+    background-color: var(--lightest-gray);
+    padding: 10px 0;
+}
+
+/* .logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    margin-bottom: 20px; 
+} */
+
+.logo img {
+    width: 100px; /* Adjust logo size */
+    height: auto;
+}
+
+.company-title {
+    font-size: 2rem; /* Adjust size as needed */
+    color: var(--darkest-gray);
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+} */
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--darkest-gray);
+    font-weight: 700;
+}
+
+nav ul li a:hover {
+    color: var(--darker-gray);
+}
+
+/* Sections */
+.section {
+    padding: 60px 0;
+}
+
+.section:nth-child(even) {
+    background-color: var(--lighter-gray);
+}
+
+.section:nth-child(odd) {
+    background-color: var(--lightest-gray);
+}
+
+.section p {
+    text-align: justify;
+    hyphens: auto;
+}
+
+h1, h2, h3 {
+    color: var(--darkest-gray);
+    margin-bottom: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+/* About Section */
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px; 
+}
+
+.about-text {
+    flex: 1; 
+    text-align: left;
+}
+
+.about-image {
+    flex: 1;
+    text-align: center;
+}
+
+.about-image img {
+    width: 100%; 
+    max-width: 400px; 
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Products */
+.product {
+    margin-bottom: 40px;
+}
+
+.product img {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.product video {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--darker-gray);
+    color: var(--lightest-gray);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: var(--darkest-gray);
+    color: var(--lightest-gray);
+}
+
+/* Contact Form */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 5px;
+}
+
+form input, form textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid var(--darkest-gray);
+    border-radius: 5px;
+    width: 100%;
+    max-width: 500px;
+}
+
+form button {
+    align-self: flex-start;
+}
+
+/* Map */
+.map-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: var(--lighter-gray);
+    margin-bottom: 20px;
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Footer */
+footer {
+    background-color: var(--lightest-gray);
+    color: var(--darkest-gray);
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Product Grid Layout */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for product pairs */
+    gap: 20px; /* space between the cards */
+    padding: 20px;
+}
+
+.product-card {
+    background-color: var(--lightest-gray);
+    border: 1px solid var(--gray);
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card img {
+    width: 40%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 1.2rem;
+    color: var(--darkest-gray);
+    margin-bottom: 10px;
+}
+
+.product-card p {
+    font-size: 1rem;
+    color: var(--dark-gray);
+    margin-bottom: 15px;
+}
+
+.product-card .btn {
+    display: inline-block;
+    background-color: var(--darker-gray);
+    color: var(--lightest-gray);
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.product-card .btn:hover {
+    background-color: var(--darkest-gray);
+    color: var(--lightest-gray);
+}
+
+/* Table in Product Description */
+.product-card table {
+    width: 100%;
+    margin-top: 15px;
+    border-collapse: collapse;
+}
+
+.product-card table th,
+.product-card table td {
+    border: 1px solid var(--gray);
+    padding: 8px;
+    text-align: left;
+}
+
+.product-card table th {
+    background-color: var(--lighter-gray);
+    font-weight: bold;
+}
+
+/* Responsive Styles for Grid */
+/* Responsive Styles for Larger Tablets */
+@media (max-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for larger tablets */
+    }
+}
+
+/* Responsive Styles for Tablets and Small Screens */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+    }
+
+    .header-right img {
+        max-height: 300px; /* Limit image size on smaller screens */
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    /* About Section for Tablets */
+    .about-container {
+        flex-direction: column;
+        position: relative;
+        height: auto; /* Let content determine height */
+    }
+
+    .about-image {
+        flex: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Place image behind the text */
+    }
+
+    .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        border-radius: 0; 
+    }
+
+    .about-text {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
+        border-radius: 10px;
+        text-align: center;
+        z-index: 1; /* Ensure text is above the image */
+    }
+
+    .about-text h1 {
+        font-size: 1.8rem; /* Adjust text size for smaller screens */
+    }
+
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    .product img, .product video {
+        max-width: 100%;
+    }
+
+    form input, form textarea {
+        max-width: 100%;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for small tablets and large phones */
+        gap: 15px; /* Adjust spacing for smaller screens */
+    }
+}
+
+/* Responsive Styles for Phones */
+@media (max-width: 480px) {
+    /* Grid for Phones */
+    .product-grid {
+        grid-template-columns: 1fr; /* 1 column for phones */
+    }
+
+    .about-text h1 {
+        font-size: 1.6rem; /* Further reduce text size for small screens */
+    }
+
+    .about-text p {
+        font-size: 0.9rem;
+    }
+
+    .header-content {
+        text-align: center;
+    }
+
+    nav ul {
+        padding: 0;
+    }
+
+    /* About Section for Phones */
+    .about-container {
+        flex-direction: column;
+        position: relative;
+        height: 400px; /* Set a fixed height for the section */
+    }
+
+    .about-image {
+        flex: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Place the image behind the text */
+    }
+
+    .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensure the image covers the container */
+        border-radius: 0; /* No rounding for full background effect */
+    }
+
+    .about-text {
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background for better contrast */
+        color: #fff; /* White text for readability */
+        border-radius: 10px;
+        text-align: center;
+        position: relative;
+        z-index: 1; /* Ensure text is above the background */
+    }
+
+    .about-text h1 {
+        font-size: 1.6rem; /* Adjust text size for smaller screens */
+        margin-bottom: 10px;
+    }
+
+    .about-text p {
+        font-size: 0.9rem; /* Reduce paragraph font size for phones */
+    }
+}
+
+
