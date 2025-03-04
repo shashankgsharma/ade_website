@@ -1,31 +1,37 @@
+// JavaScript for handling the slider
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
-        const form = document.getElementById('contact-form');
-        const data = new FormData(form);
-        
-        fetch(scriptURL, { method: 'POST', body: data })
-            .then(response => response.text())
-            .then(result => {
-                document.getElementById('message-alert').innerText = 'Details sent successfully!';
-                document.getElementById('message-alert').style.display = 'block';
-                setTimeout(() => { document.getElementById('message-alert').style.display = 'none'; }, 3000);
-                form.reset();
-            })
-            .catch(error => console.error('Error!', error.message));
+    // Initialize slide index for each slider
+    var sliders = document.querySelectorAll('.image-slider');
+    sliders.forEach(function(slider, index) {
+        let slideIndex = 1;
+        showSlides(slider, slideIndex);
+
+        // Next/previous controls
+        slider.querySelector('.next').addEventListener('click', function() {
+            showSlides(slider, slideIndex += 1);
+        });
+
+        slider.querySelector('.prev').addEventListener('click', function() {
+            showSlides(slider, slideIndex -= 1);
+        });
+
+        function showSlides(slider, n) {
+            let slides = slider.getElementsByClassName('slide');
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
     });
 });
 
-function initMap() {
-    const companyLocation = { lat: 23.0225, lng: 72.5714 }; // Example: Ahmedabad, Gujarat, India
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 15,
-        center: companyLocation,
-    });
-    const marker = new google.maps.Marker({
-        position: companyLocation,
-        map: map,
-    });
-}
+document.querySelectorAll('.slide img').forEach(img => {
+    img.onload = function() {
+        if (this.naturalHeight > this.naturalWidth) {
+            this.style.height = '100%';
+            this.style.width = 'auto';
+        }
+    };
+});
