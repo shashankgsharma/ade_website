@@ -91,21 +91,6 @@ nav ul {
     flex: 0 1 auto; /* Navigation can grow and shrink but maintains content size */
 }
 
-@media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
-    }
-
-    .company-title {
-        margin: 10px 0; /* Add margin top and bottom for the mobile view */
-    }
-
-    nav ul {
-        width: 100%; /* Full width for smaller screens */
-        justify-content: center; /* Center navigation items on small screens */
-    }
-}
-
 header {
     background-color: var(--lightest-gray);
     padding: 10px 0;
@@ -369,87 +354,49 @@ footer {
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
-    }
-
-    .header-right img {
-        max-height: 300px; /* Limit image size on smaller screens */
+        align-items: center;
+        text-align: center;
     }
 
     nav ul {
         flex-direction: column;
         align-items: center;
+        gap: 10px;
     }
 
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    /* About Section for Tablets */
     .about-container {
         flex-direction: column;
+        height: auto;
         position: relative;
-        height: auto; /* Let content determine height */
     }
 
     .about-image {
-        flex: none;
-        position: absolute;
-        top: 0;
-        left: 0;
+        position: static;
         width: 100%;
-        height: 100%;
-        z-index: -1; /* Place image behind the text */
-    }
-
-    .about-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; 
-        border-radius: 0; 
+        height: auto;
     }
 
     .about-text {
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
-        border-radius: 10px;
-        text-align: center;
-        z-index: 1; /* Ensure text is above the image */
+        background: rgba(255, 255, 255, 0.9);
+        padding: 15px;
     }
 
-    .about-text h1 {
-        font-size: 1.8rem; /* Adjust text size for smaller screens */
-    }
-
-    .about-text p {
-        font-size: 1rem;
-    }
-
-    .product img, .product video {
-        max-width: 100%;
+    .product-grid {
+        grid-template-columns: 1fr;
     }
 
     form input, form textarea {
-        max-width: 100%;
+        width: 100%;
     }
 
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns for small tablets and large phones */
-        gap: 15px; /* Adjust spacing for smaller screens */
+    form button {
+        width: 100%;
     }
 }
 
-/* Responsive Styles for Phones */
 @media (max-width: 480px) {
-    /* Grid for Phones */
-    .product-grid {
-        grid-template-columns: 1fr; /* 1 column for phones */
-    }
-
-    .about-text h1 {
-        font-size: 1.6rem; /* Further reduce text size for small screens */
-    }
-
-    .about-text p {
+    .about-text {
+        padding: 10px;
         font-size: 0.9rem;
     }
 
@@ -457,53 +404,11 @@ footer {
         text-align: center;
     }
 
-    nav ul {
-        padding: 0;
-    }
-
-    /* About Section for Phones */
     .about-container {
-        flex-direction: column;
-        position: relative;
-        height: 400px; /* Set a fixed height for the section */
-    }
-
-    .about-image {
-        flex: none;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1; /* Place the image behind the text */
-    }
-
-    .about-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Ensure the image covers the container */
-        border-radius: 0; /* No rounding for full background effect */
-    }
-
-    .about-text {
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background for better contrast */
-        color: #fff; /* White text for readability */
-        border-radius: 10px;
-        text-align: center;
-        position: relative;
-        z-index: 1; /* Ensure text is above the background */
-    }
-
-    .about-text h1 {
-        font-size: 1.6rem; /* Adjust text size for smaller screens */
-        margin-bottom: 10px;
-    }
-
-    .about-text p {
-        font-size: 0.9rem; /* Reduce paragraph font size for phones */
+        height: auto;
     }
 }
+
 
 /* Contact Section Updates */
 .contact-container {
