@@ -59,15 +59,16 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.className = 'modal';
             modal.innerHTML = `
                 <div class="modal-content">
-                    <span class="close-modal">&times;</span>
+                    <button class="close-modal" aria-label="Close modal"></button>
                     ${this.innerHTML}
                 </div>
             `;
             
             document.body.appendChild(modal);
             modal.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
             
-            // Initialize slider in the modal
+            // Initialize slider in modal
             const modalSlider = modal.querySelector('.image-slider');
             if (modalSlider) {
                 initializeSlider(modalSlider);
@@ -78,6 +79,44 @@ document.addEventListener('DOMContentLoaded', function() {
             const url = new URL(window.location);
             url.searchParams.set('product', productId);
             window.history.pushState({}, '', url);
+
+            // Improved close modal functionality
+            const closeModalButton = modal.querySelector('.close-modal');
+            const handleCloseModal = function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                modal.style.opacity = '0';
+                modal.style.transition = 'opacity 0.2s ease';
+                document.body.style.overflow = ''; // Restore scrolling
+                setTimeout(() => {
+                    modal.remove();
+                    const url = new URL(window.location);
+                    url.searchParams.delete('product');
+                    window.history.pushState({}, '', url);
+                }, 200);
+            };
+            
+            // Add touch events with improved handling
+            closeModalButton.addEventListener('click', handleCloseModal, { passive: false });
+            closeModalButton.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                handleCloseModal(e);
+            }, { passive: false });
+            
+            // Handle clicking/tapping outside the modal with improved touch handling
+            const handleOutsideClick = function(e) {
+                if (e.target === modal) {
+                    handleCloseModal(e);
+                }
+            };
+            
+            modal.addEventListener('click', handleOutsideClick);
+            modal.addEventListener('touchend', (e) => {
+                if (e.target === modal) {
+                    e.preventDefault();
+                    handleCloseModal(e);
+                }
+            }, { passive: false });
 
             // Re-attach share button functionality in modal
             modal.querySelector('.btn.share').addEventListener('click', async (e) => {
@@ -113,23 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.error('Error sharing:', err);
                 }
             });
-            
-            modal.querySelector('.close-modal').onclick = function() {
-                modal.remove();
-                const url = new URL(window.location);
-                url.searchParams.delete('product');
-                window.history.pushState({}, '', url);
-            };
-            
-            window.onclick = function(event) {
-                const modal = document.querySelector('.modal');
-                if (event.target == modal) {
-                    modal.remove();
-                    const url = new URL(window.location);
-                    url.searchParams.delete('product');
-                    window.history.pushState({}, '', url);
-                }
-            };
         });
     });
 
